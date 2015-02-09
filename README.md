@@ -110,6 +110,7 @@ Check if there's an active animation.
 Prefering light colors in the gradients gives better results. As mentioned before, use square frames. Rectangular frames are not tested and might produce unexpected results.
 
 ##To-Do
+- [ ] Add example project
 - [ ] Carthage Support
 - [ ] IBDesignable/IBInspectable support
 - [ ] Adding a `progress` property as an alternative to `angle`
