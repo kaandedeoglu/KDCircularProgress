@@ -49,7 +49,7 @@ The intensity of the glow. Between 0 and 1.0. Default is 1.0.
 
 - **.Constant** - Constant glow.
 
-- **.None** - No glow
+- **.NoGlow** - No glow
 
 The default is **.Forward**
 
