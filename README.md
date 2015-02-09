@@ -94,14 +94,14 @@ public func animateToAngle(toAngle: Int, duration: NSTimeInterval, completion: (
 
 Animate the progress from the current state to a target value.
 
-```
-swift public func pauseAnimation()
+```swift 
+public func pauseAnimation()
 ```
 
 Pause the animation, if any.
 
-```
-swift public func isAnimating() -> Bool
+```swift 
+public func isAnimating() -> Bool
 ```
 
 Check if there's an active animation.
