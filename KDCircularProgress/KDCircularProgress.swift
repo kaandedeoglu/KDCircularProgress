@@ -12,7 +12,7 @@ public enum KDCircularProgressGlowMode {
     case Forward, Reverse, Constant, NoGlow
 }
 
-public class KDCircularProgress: UIControl {
+public class KDCircularProgress: UIView {
     
     private struct ConversionFunctions {
         static func DegreesToRadians (value:CGFloat) -> CGFloat {
