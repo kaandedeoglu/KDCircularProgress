@@ -202,6 +202,9 @@ public class KDCircularProgress: UIView {
     }
     
     public func animateToAngle(toAngle: Int, duration: NSTimeInterval, completion: ((Bool) -> Void)?) {
+        if isAnimating() {
+            pauseAnimation()
+        }
         animateFromAngle(angle, toAngle: toAngle, duration: duration, completion: completion)
     }
     
