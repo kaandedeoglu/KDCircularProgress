@@ -1,21 +1,24 @@
 # KDCircularProgress
 `KDCircularProgress` is a circular progress view written in Swift. It makes it possible to have gradients in the progress view, along with glows and animations. Here's an example
 
+[Youtube Link](http://youtu.be/iIdas72MXOg)
+
+
 [![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot.png)](http://youtu.be/iIdas72MXOg)
 
 ```swift
-        let progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
-        progress.startAngle = -90
-        progress.progressThickness = 0.2
-        progress.trackThickness = 0.7
-        progress.clockwise = true
-        progress.center = view.center
-        progress.gradientRotateSpeed = 2
-        progress.roundedCorners = true
-        progress.glowMode = .Forward
-        progress.angle = 300
-        progress.setColors(UIColor.cyanColor() ,UIColor.whiteColor(), UIColor.magentaColor())
-        view.addSubview(progress)
+let progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+progress.startAngle = -90
+progress.progressThickness = 0.2
+progress.trackThickness = 0.7
+progress.clockwise = true
+progress.center = view.center
+progress.gradientRotateSpeed = 2
+progress.roundedCorners = true
+progress.glowMode = .Forward
+progress.angle = 300
+progress.setColors(UIColor.cyanColor() ,UIColor.whiteColor(), UIColor.magentaColor())
+view.addSubview(progress)
 ```
 
 ## Installation
