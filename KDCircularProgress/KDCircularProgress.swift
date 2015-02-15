@@ -51,7 +51,7 @@ public class KDCircularProgress: UIView {
     
     private var progressLayer: KDCircularProgressViewLayer! {
         get {
-            return layer as KDCircularProgressViewLayer
+            return layer as! KDCircularProgressViewLayer
         }
     }
     
@@ -209,7 +209,7 @@ public class KDCircularProgress: UIView {
     }
     
     public func pauseAnimation() {
-        let presentationLayer = progressLayer.presentationLayer() as KDCircularProgressViewLayer
+        let presentationLayer = progressLayer.presentationLayer() as! KDCircularProgressViewLayer
         let currentValue = presentationLayer.angle
         progressLayer.removeAllAnimations()
         animationCompletionBlock = nil
@@ -280,7 +280,7 @@ public class KDCircularProgress: UIView {
         
         override init!(layer: AnyObject!) {
             super.init(layer: layer)
-            let progressLayer = layer as KDCircularProgressViewLayer
+            let progressLayer = layer as! KDCircularProgressViewLayer
             radius = progressLayer.radius
             angle = progressLayer.angle
             startAngle = progressLayer.startAngle
@@ -340,7 +340,7 @@ public class KDCircularProgress: UIView {
             //Gradient - Fill
             if colorsArray.count > 1 {
                 var componentsArray: [CGFloat] = []
-                var rgbColorsArray: [UIColor] = colorsArray.map {c in // Make sure every color in colors array is in RGB color space
+                let rgbColorsArray: [UIColor] = colorsArray.map {c in // Make sure every color in colors array is in RGB color space
                     if CGColorGetNumberOfComponents(c.CGColor) == UInt(2) {
                         let whiteValue = CGColorGetComponents(c.CGColor)[0]
                         return UIColor(red: whiteValue, green: whiteValue, blue: whiteValue, alpha: 1.0)
@@ -374,15 +374,15 @@ public class KDCircularProgress: UIView {
         func drawGradientWithContext(ctx: CGContext!, componentsArray: [CGFloat]) {
             let baseSpace = CGColorSpaceCreateDeviceRGB()
             let locations = locationsCache ?? gradientLocationsFromColorCount(componentsArray.count/4, gradientWidth: bounds.size.width)
-            var gradient: CGGradient = {
-                if let g = self.gradientCache {
-                    return g
-                } else {
-                    let g = CGGradientCreateWithColorComponents(baseSpace, componentsArray, locations, UInt(componentsArray.count / 4))
-                    self.gradientCache = g
-                    return g
-                }
-            }()
+            let gradient: CGGradient
+
+            if let g = self.gradientCache {
+                gradient = g
+            } else {
+                let g = CGGradientCreateWithColorComponents(baseSpace, componentsArray, locations, UInt(componentsArray.count / 4))
+                self.gradientCache = g
+                gradient = g
+            }
             
             let halfX = bounds.size.width/2.0
             let floatPi = CGFloat(M_PI)
