@@ -341,7 +341,7 @@ public class KDCircularProgress: UIView {
             if colorsArray.count > 1 {
                 var componentsArray: [CGFloat] = []
                 let rgbColorsArray: [UIColor] = colorsArray.map {c in // Make sure every color in colors array is in RGB color space
-                    if CGColorGetNumberOfComponents(c.CGColor) == UInt(2) {
+                    if CGColorGetNumberOfComponents(c.CGColor) == 2 {
                         let whiteValue = CGColorGetComponents(c.CGColor)[0]
                         return UIColor(red: whiteValue, green: whiteValue, blue: whiteValue, alpha: 1.0)
                     } else {
@@ -379,7 +379,7 @@ public class KDCircularProgress: UIView {
             if let g = self.gradientCache {
                 gradient = g
             } else {
-                let g = CGGradientCreateWithColorComponents(baseSpace, componentsArray, locations, UInt(componentsArray.count / 4))
+                let g = CGGradientCreateWithColorComponents(baseSpace, componentsArray, locations,componentsArray.count / 4)
                 self.gradientCache = g
                 gradient = g
             }
