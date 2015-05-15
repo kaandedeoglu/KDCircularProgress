@@ -6,12 +6,12 @@
 
 [![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot.png)](http://youtu.be/iIdas72MXOg)
 
-[![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot2.jpg)]
-[![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot3.jpg)]
-[![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot4.jpg)]
-[![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot5.jpg)]
-[![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot6.jpg)]
-[![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot7.jpg)]
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot2.jpg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot3.jpg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot4.jpg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot5.jpg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot6.jpg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot7.jpg)
 
 ```swift
 let progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
