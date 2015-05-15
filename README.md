@@ -29,7 +29,7 @@ view.addSubview(progress)
 ```
 
 ## Installation
-
+- It's on Cocoapods under the name (you guessed it!) KDCircularProgress
 - Just drag `KDCircularProgress.swift` into your project. `Carthage` support is on To-do list.
 
 ## Properties
@@ -122,6 +122,7 @@ Prefering light colors in the gradients gives better results. As mentioned befor
 ##To-Do
 - [x] Add example project
 - [ ] Carthage Support
+- [x] Cocoapods Support
 - [ ] IBDesignable/IBInspectable support
 - [ ] Adding a `progress` property as an alternative to `angle`
 - [ ] Clean up
