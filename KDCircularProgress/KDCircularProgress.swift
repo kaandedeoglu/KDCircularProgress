@@ -317,7 +317,7 @@ public class KDCircularProgress: UIView {
             CGContextSetLineCap(ctx, kCGLineCapButt)
             CGContextDrawPath(ctx, kCGPathStroke)
 
-            UIGraphicsBeginImageContext(CGSize(width: size.width, height: size.height))
+            UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
             let imageCtx = UIGraphicsGetCurrentContext()
             let reducedAngle = UtilityFunctions.Mod(angle, range: 360, minMax: (0, 360))
             let fromAngle = ConversionFunctions.DegreesToRadians(CGFloat(-startAngle))
