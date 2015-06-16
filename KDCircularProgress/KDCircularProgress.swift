@@ -228,8 +228,8 @@ public class KDCircularProgress: UIView {
     }
     
     public override func didMoveToWindow() {
-        if window != nil {
-            progressLayer.contentsScale = window!.screen.scale
+        if let window = window {
+            progressLayer.contentsScale = window.screen.scale
         }
     }
     
