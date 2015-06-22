@@ -219,7 +219,7 @@ public class KDCircularProgress: UIView {
     public func stopAnimation() {
         let presentationLayer = progressLayer.presentationLayer() as! KDCircularProgressViewLayer
         progressLayer.removeAllAnimations()
-        angle = 360
+        angle = 0
     }
     
     public func isAnimating() -> Bool {
