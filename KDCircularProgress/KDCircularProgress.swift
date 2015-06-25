@@ -12,6 +12,7 @@ public enum KDCircularProgressGlowMode {
     case Forward, Reverse, Constant, NoGlow
 }
 
+@IBDesignable
 public class KDCircularProgress: UIView {
     
     private struct ConversionFunctions {
@@ -61,7 +62,7 @@ public class KDCircularProgress: UIView {
         }
     }
     
-    public var angle: Int! {
+    @IBInspectable public var angle: Int = 0 {
         didSet {
             if self.isAnimating() {
                 self.pauseAnimation()
@@ -70,66 +71,66 @@ public class KDCircularProgress: UIView {
         }
     }
     
-    public var startAngle: Int! {
+    @IBInspectable public var startAngle: Int = 0 {
         didSet {
             progressLayer.startAngle = UtilityFunctions.Mod(startAngle, range: 360, minMax: (0,360))
             progressLayer.setNeedsDisplay()
         }
     }
     
-    public var clockwise: Bool! {
+    @IBInspectable public var clockwise: Bool = true {
         didSet {
             progressLayer.clockwise = clockwise
             progressLayer.setNeedsDisplay()
         }
     }
     
-    public var roundedCorners: Bool! {
+    @IBInspectable public var roundedCorners: Bool = true {
         didSet {
             progressLayer.roundedCorners = roundedCorners
         }
     }
     
-    public var gradientRotateSpeed: CGFloat! {
+    @IBInspectable public var gradientRotateSpeed: CGFloat = 0 {
         didSet {
             progressLayer.gradientRotateSpeed = gradientRotateSpeed
         }
     }
     
-    public var glowAmount: CGFloat! {//Between 0 and 1
+    @IBInspectable public var glowAmount: CGFloat = 1.0 {//Between 0 and 1
         didSet {
             progressLayer.glowAmount = UtilityFunctions.Clamp(glowAmount, minMax: (0, 1))
         }
     }
     
-    public var glowMode: KDCircularProgressGlowMode! {
+    @IBInspectable public var glowMode: KDCircularProgressGlowMode = .Forward {
         didSet {
             progressLayer.glowMode = glowMode
         }
     }
     
-    public var progressThickness: CGFloat! {//Between 0 and 1
+    @IBInspectable public var progressThickness: CGFloat = 0.4 {//Between 0 and 1
         didSet {
             progressThickness = UtilityFunctions.Clamp(progressThickness, minMax: (0, 1))
             progressLayer.progressThickness = progressThickness/2
         }
     }
     
-    public var trackThickness: CGFloat! {//Between 0 and 1
+    @IBInspectable public var trackThickness: CGFloat = 0.5 {//Between 0 and 1
         didSet {
             trackThickness = UtilityFunctions.Clamp(trackThickness, minMax: (0, 1))
             progressLayer.trackThickness = trackThickness/2
         }
     }
     
-    public var trackColor: UIColor! {
+    @IBInspectable public var trackColor: UIColor = UIColor.blackColor() {
         didSet {
             progressLayer.trackColor = trackColor
             progressLayer.setNeedsDisplay()
         }
     }
     
-    public var progressColors: [UIColor]! {
+    @IBInspectable public var progressColors: [UIColor]! {
         get {
             return progressLayer.colorsArray
         }
@@ -139,13 +140,21 @@ public class KDCircularProgress: UIView {
         }
     }
     
+    //These are used only from the Interface-Builder. Changing these from code will have no effect.
+    //Also IB colors are limited to 3, whereas programatically we can have an arbitrary number of them.
+    @IBInspectable public var IBColor1: UIColor?
+    @IBInspectable public var IBColor2: UIColor?
+    @IBInspectable public var IBColor3: UIColor?
+    
+    
     private var animationCompletionBlock: ((Bool) -> Void)?
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.clearColor()
         userInteractionEnabled = false
         setInitialValues()
+        refreshValues()
+        checkAndSetIBColors()
     }
     
     convenience public init(frame:CGRect, colors: UIColor...) {
@@ -158,10 +167,41 @@ public class KDCircularProgress: UIView {
 		setTranslatesAutoresizingMaskIntoConstraints(false)
 		userInteractionEnabled = false
 		setInitialValues()
+        refreshValues()
 	}
+    
+    public override func awakeFromNib() {
+        checkAndSetIBColors()
+    }
 	
     override public class func layerClass() -> AnyClass {
         return KDCircularProgressViewLayer.self
+    }
+    
+    private func setInitialValues() {
+        radius = (frame.size.width/2.0) * 0.8 //We always apply a 20% padding, stopping glows from being clipped
+        backgroundColor = .clearColor()
+        setColors(UIColor.whiteColor(), UIColor.redColor())
+    }
+    
+    private func refreshValues() {
+        progressLayer.angle = angle
+        progressLayer.startAngle = UtilityFunctions.Mod(startAngle, range: 360, minMax: (0,360))
+        progressLayer.clockwise = clockwise
+        progressLayer.roundedCorners = roundedCorners
+        progressLayer.gradientRotateSpeed = gradientRotateSpeed
+        progressLayer.glowAmount = UtilityFunctions.Clamp(glowAmount, minMax: (0, 1))
+        progressLayer.glowMode = glowMode
+        progressLayer.progressThickness = progressThickness/2
+        progressLayer.trackColor = trackColor
+        progressLayer.trackThickness = trackThickness/2
+    }
+    
+    private func checkAndSetIBColors() {
+        let nonNilColors = [IBColor1, IBColor2, IBColor3].filter { $0 != nil}.map { $0! }
+        if nonNilColors.count > 0 {
+            setColors(nonNilColors)
+        }
     }
     
     public func setColors(colors: UIColor...) {
@@ -171,21 +211,6 @@ public class KDCircularProgress: UIView {
     private func setColors(colors: [UIColor]) {
         progressLayer.colorsArray = colors
         progressLayer.setNeedsDisplay()
-    }
-    
-    private func setInitialValues() { // We have this because didSet effects are not triggered when invoked directly from init method
-        radius = (frame.size.width/2.0) * 0.8 //We always apply a 20% padding, stopping glows from being clipped
-        angle = 0
-        startAngle = 0
-        clockwise = true
-        roundedCorners = false
-        gradientRotateSpeed = 0
-        glowAmount = 1
-        glowMode = .Forward
-        progressThickness = 0.4
-        trackThickness = 0.5
-        trackColor = UIColor.blackColor()
-        setColors(UIColor.whiteColor(), UIColor.redColor())
     }
     
     public func animateFromAngle(fromAngle: Int, toAngle: Int, duration: NSTimeInterval, completion: ((Bool) -> Void)?) {
@@ -246,6 +271,13 @@ public class KDCircularProgress: UIView {
         if newSuperview == nil && isAnimating() {
             pauseAnimation()
         }
+    }
+    
+    public override func prepareForInterfaceBuilder() {
+        setInitialValues()
+        refreshValues()
+        checkAndSetIBColors()
+        progressLayer.setNeedsDisplay()
     }
     
     private class KDCircularProgressViewLayer: CALayer {

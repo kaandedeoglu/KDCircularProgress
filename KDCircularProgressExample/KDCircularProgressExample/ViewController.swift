@@ -18,16 +18,15 @@ class ViewController: UIViewController {
         
         progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         progress.startAngle = -90
-        progress.progressThickness = 0.05
-        progress.trackThickness = 0.4
+        progress.progressThickness = 0.2
+        progress.trackThickness = 0.6
         progress.clockwise = true
-        progress.center = view.center
         progress.gradientRotateSpeed = 2
         progress.roundedCorners = false
         progress.glowMode = .Forward
-        progress.glowAmount = 0.0
-//        progress.setColors(UIColor.cyanColor() ,UIColor.whiteColor(), UIColor.magentaColor())
-        progress.setColors(UIColor.whiteColor())
+        progress.glowAmount = 0.9
+        progress.setColors(UIColor.cyanColor() ,UIColor.whiteColor(), UIColor.magentaColor(), UIColor.whiteColor(), UIColor.orangeColor())
+        progress.center = CGPoint(x: view.center.x, y: view.center.y + 25)
         view.addSubview(progress)
     }
     
