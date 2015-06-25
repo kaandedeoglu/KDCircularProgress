@@ -154,9 +154,12 @@ public class KDCircularProgress: UIView {
     }
 
     required public init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+		super.init(coder: aDecoder)
+		setTranslatesAutoresizingMaskIntoConstraints(false)
+		userInteractionEnabled = false
+		setInitialValues()
+	}
+	
     override public class func layerClass() -> AnyClass {
         return KDCircularProgressViewLayer.self
     }
