@@ -168,6 +168,7 @@
 		BC9E757E1A8CE4A500B1DF3D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Kaan Dedeoglu";
 				TargetAttributes = {
@@ -418,6 +419,7 @@
 				BC9E75A71A8CE4A500B1DF3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC9E75A81A8CE4A500B1DF3D /* Build configuration list for PBXNativeTarget "KDCircularProgressExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +428,7 @@
 				BC9E75AA1A8CE4A500B1DF3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
