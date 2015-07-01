@@ -142,9 +142,9 @@ public class KDCircularProgress: UIView {
     
     //These are used only from the Interface-Builder. Changing these from code will have no effect.
     //Also IB colors are limited to 3, whereas programatically we can have an arbitrary number of them.
-    @IBInspectable public var IBColor1: UIColor?
-    @IBInspectable public var IBColor2: UIColor?
-    @IBInspectable public var IBColor3: UIColor?
+    @objc @IBInspectable private var IBColor1: UIColor?
+    @objc @IBInspectable private var IBColor2: UIColor?
+    @objc @IBInspectable private var IBColor3: UIColor?
     
     
     private var animationCompletionBlock: ((Bool) -> Void)?
