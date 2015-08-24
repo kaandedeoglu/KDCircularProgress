@@ -163,7 +163,7 @@ public class KDCircularProgress: UIView {
     }
 
     required public init(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
+		super.init(coder: aDecoder)!
 		translatesAutoresizingMaskIntoConstraints = false
 		userInteractionEnabled = false
 		setInitialValues()
@@ -393,7 +393,7 @@ public class KDCircularProgress: UIView {
                 
                 for color in rgbColorsArray {
                     let colorComponents: UnsafePointer<CGFloat> = CGColorGetComponents(color.CGColor)
-                    componentsArray.extend([colorComponents[0],colorComponents[1],colorComponents[2],1.0])
+                    componentsArray.appendContentsOf([colorComponents[0],colorComponents[1],colorComponents[2],1.0])
                 }
                 
                 drawGradientWithContext(ctx, componentsArray: componentsArray)
