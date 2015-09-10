@@ -130,6 +130,16 @@ public class KDCircularProgress: UIView {
         }
     }
     
+    @IBInspectable public var progressInsideFillColor: UIColor? = nil {
+        didSet {
+            if let color = progressInsideFillColor {
+                progressLayer.progressInsideFillColor = color
+            } else {
+                progressLayer.progressInsideFillColor = UIColor.clearColor()
+            }
+        }
+    }
+    
     @IBInspectable public var progressColors: [UIColor]! {
         get {
             return progressLayer.colorsArray
@@ -291,6 +301,7 @@ public class KDCircularProgress: UIView {
         var progressThickness: CGFloat!
         var trackThickness: CGFloat!
         var trackColor: UIColor!
+        var progressInsideFillColor: UIColor = UIColor.clearColor()
         var colorsArray: [UIColor]! {
             didSet {
                 gradientCache = nil
@@ -355,9 +366,11 @@ public class KDCircularProgress: UIView {
             let arcRadius = max(radius - trackLineWidth/2, radius - progressLineWidth/2)
             CGContextAddArc(ctx, CGFloat(size.width/2.0), CGFloat(size.height/2.0), arcRadius, 0, CGFloat(M_PI * 2), 0)
             trackColor.set()
+            CGContextSetStrokeColorWithColor(ctx, trackColor.CGColor)
+            CGContextSetFillColorWithColor(ctx, progressInsideFillColor.CGColor)
             CGContextSetLineWidth(ctx, trackLineWidth)
             CGContextSetLineCap(ctx, CGLineCap.Butt)
-            CGContextDrawPath(ctx, .Stroke)
+            CGContextDrawPath(ctx, .FillStroke)
 
             UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
             let imageCtx = UIGraphicsGetCurrentContext()
