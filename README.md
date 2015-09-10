@@ -1,5 +1,7 @@
 # KDCircularProgress
-`KDCircularProgress` is a circular progress view written in Swift. It makes it possible to have gradients in the progress view, along with glows and animations. Here's an example
+`KDCircularProgress` is a circular progress view written in Swift. It makes it possible to have gradients in the progress view, along with glows and animations. It also has `IBInspectable` and `IBDesignable` support, so you can configure and preview inside `Interface Builder`. 
+
+Here's an example
 
 [Youtube Link](http://youtu.be/iIdas72MXOg)
 
