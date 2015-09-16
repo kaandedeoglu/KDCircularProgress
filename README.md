@@ -1,5 +1,9 @@
 # KDCircularProgress
-`KDCircularProgress` is a circular progress view written in Swift. It makes it possible to have gradients in the progress view, along with glows and animations. Here's an example
+`KDCircularProgress` is a circular progress view written in Swift. It makes it possible to have gradients in the progress view, along with glows and animations. 
+
+KDCircularProgress also has `IBInspectable` and `IBDesignable` support, so you can configure and preview inside the `Interface Builder`. 
+
+Here's an example
 
 [Youtube Link](http://youtu.be/iIdas72MXOg)
 
@@ -34,6 +38,9 @@ view.addSubview(progress)
 
 ## Properties
 
+####progressColors: `[UIColor]`
+The colors used to generate the gradient of the progress. You can also set this using the variadic `setColors(UIColor...)` method. A gradient is used only if there is more than one color. A fill is used otherwise. The default is a white fill.
+
 ####angle: `Int`
 The angle of the progress. Between 0 and 360 (inclusive). Simply change its value in order to change the visual progress of the component. Default is 0.
 
@@ -47,7 +54,7 @@ Clockwise if true, Counter-clockwise if false. Default is true.
 When true, the ends of the progress track will be drawn with a half circle radius. Default is false.
 
 ####gradientRotateSpeed: `CGFloat`
-Describes how many times the underlying gradient will turn for each full cycle of the progress. Integer values recommended. Default is 0.
+Describes how many times the underlying gradient will perform a 2π rotation for each full cycle of the progress. Integer values recommended. Default is 0.
 
 ####glowAmount: `CGFloat`
 The intensity of the glow. Between 0 and 1.0. Default is 1.0.
@@ -70,10 +77,10 @@ The thickness of the progress. Between 0 and 1. Default is 0.4
 The thickness of the background track. Between 0 and 1. Default is 0.5
 
 ####trackColor: `UIColor`
-The color of the background track. Default is black.
+The color of the background track. Default is `UIColor.blackColor()`.
 
-####progressColors: `[UIColor]`
-The colors used to generate the gradient of the progress. You can also set this using the variadic setColors(UIColor...) method. A gradient is used only if there is more than one color. A fill is used otherwise. The default is a white fill.
+####progressInsideFillColor: `UIColor`
+The color of the center of the circle. Default is `UIColor.clearColor()`.
 
 ##Methods
 ```swift 
