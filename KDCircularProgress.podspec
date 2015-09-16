@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'KDCircularProgress'
-  s.version = '1.1'
+  s.version = '1.2'
   s.license = 'MIT'
   s.summary = 'A circular progress view with gradients written in Swift'
   s.homepage = 'https://github.com/kaandedeoglu/KDCircularProgress'
