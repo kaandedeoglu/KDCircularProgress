@@ -188,6 +188,11 @@ public class KDCircularProgress: UIView {
         return KDCircularProgressViewLayer.self
     }
     
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        radius = (frame.size.width/2.0) * 0.8
+    }
+    
     private func setInitialValues() {
         radius = (frame.size.width/2.0) * 0.8 //We always apply a 20% padding, stopping glows from being clipped
         backgroundColor = .clearColor()
@@ -291,11 +296,25 @@ public class KDCircularProgress: UIView {
     
     private class KDCircularProgressViewLayer: CALayer {
         @NSManaged var angle: Int
-        var radius: CGFloat!
+        var radius: CGFloat! {
+            didSet {
+                invalidateGradientCache()
+            }
+        }
         var startAngle: Int!
-        var clockwise: Bool!
+        var clockwise: Bool! {
+            didSet {
+                if clockwise != oldValue {
+                    invalidateGradientCache()
+                }
+            }
+        }
         var roundedCorners: Bool!
-        var gradientRotateSpeed: CGFloat!
+        var gradientRotateSpeed: CGFloat! {
+            didSet {
+                invalidateGradientCache()
+            }
+        }
         var glowAmount: CGFloat!
         var glowMode: KDCircularProgressGlowMode!
         var progressThickness: CGFloat!
@@ -304,15 +323,14 @@ public class KDCircularProgress: UIView {
         var progressInsideFillColor: UIColor = UIColor.clearColor()
         var colorsArray: [UIColor]! {
             didSet {
-                gradientCache = nil
-                locationsCache = nil
+                invalidateGradientCache()
             }
         }
-        var gradientCache: CGGradientRef?
-        var locationsCache: [CGFloat]?
+        private var gradientCache: CGGradientRef?
+        private var locationsCache: [CGFloat]?
         
-        struct GlowConstants {
-            static let sizeToGlowRatio: CGFloat = 0.00015
+        private struct GlowConstants {
+            private static let sizeToGlowRatio: CGFloat = 0.00015
             static func glowAmountForAngle(angle: Int, glowAmount: CGFloat, glowMode: KDCircularProgressGlowMode, size: CGFloat) -> CGFloat {
                 switch glowMode {
                 case .Forward:
@@ -421,12 +439,12 @@ public class KDCircularProgress: UIView {
             UIGraphicsPopContext()
         }
         
-        func fillRectWithContext(ctx: CGContext!, color: UIColor) {
+        private func fillRectWithContext(ctx: CGContext!, color: UIColor) {
             CGContextSetFillColorWithColor(ctx, color.CGColor)
             CGContextFillRect(ctx, bounds)
         }
         
-        func drawGradientWithContext(ctx: CGContext!, componentsArray: [CGFloat]) {
+        private func drawGradientWithContext(ctx: CGContext!, componentsArray: [CGFloat]) {
             let baseSpace = CGColorSpaceCreateDeviceRGB()
             let locations = locationsCache ?? gradientLocationsFromColorCount(componentsArray.count/4, gradientWidth: bounds.size.width)
             let gradient: CGGradient
@@ -434,9 +452,9 @@ public class KDCircularProgress: UIView {
             if let g = self.gradientCache {
                 gradient = g
             } else {
-                let g = CGGradientCreateWithColorComponents(baseSpace, componentsArray, locations,componentsArray.count / 4)
+                guard let g = CGGradientCreateWithColorComponents(baseSpace, componentsArray, locations,componentsArray.count / 4) else { return }
                 self.gradientCache = g
-                gradient = g!
+                gradient = g
             }
             
             let halfX = bounds.size.width/2.0
@@ -451,7 +469,7 @@ public class KDCircularProgress: UIView {
             CGContextDrawLinearGradient(ctx, gradient, startPoint, endPoint, .DrawsBeforeStartLocation)
         }
         
-        func gradientLocationsFromColorCount(colorCount: Int, gradientWidth: CGFloat) -> [CGFloat] {
+        private func gradientLocationsFromColorCount(colorCount: Int, gradientWidth: CGFloat) -> [CGFloat] {
             if colorCount == 0 || gradientWidth == 0 {
                 return []
             } else {
@@ -468,6 +486,11 @@ public class KDCircularProgress: UIView {
                 locationsCache = result
                 return result
             }
+        }
+        
+        private func invalidateGradientCache() {
+            gradientCache = nil
+            locationsCache = nil
         }
     }
 }
