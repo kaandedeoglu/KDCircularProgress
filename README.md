@@ -100,10 +100,12 @@ public func setColors(colors: UIColor...)
 Set the colors for the progress gradient.
 
 ```swift
-public func animateFromAngle(fromAngle: Int, toAngle: Int, duration: NSTimeInterval, completion: ((Bool) -> Void)?)
+public func animateFromAngle(fromAngle: Int, toAngle: Int, duration: NSTimeInterval, relativeDuration: Bool = true, completion: ((Bool) -> Void)?)
 ```
 
 Animate the progress from an initial value to a final value, with a completion block that fires after the animation is done.
+
+`relativeDuration` - specify if the duration is for the specific animation or is the duration that would make a full turn.
 
 ```swift
 public func animateToAngle(toAngle: Int, duration: NSTimeInterval, completion: ((Bool) -> Void)?)
