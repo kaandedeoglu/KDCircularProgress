@@ -228,15 +228,24 @@ public class KDCircularProgress: UIView {
         progressLayer.setNeedsDisplay()
     }
     
-    public func animateFromAngle(fromAngle: Int, toAngle: Int, duration: NSTimeInterval, completion: ((Bool) -> Void)?) {
+    public func animateFromAngle(fromAngle: Int, toAngle: Int, duration: NSTimeInterval, relativeDuration: Bool = true, completion: ((Bool) -> Void)?) {
         if isAnimating() {
             pauseAnimation()
+        }
+        
+        let animationDuration: NSTimeInterval
+        if relativeDuration {
+           animationDuration = duration
+        } else {
+            let traveledAngle = UtilityFunctions.Mod(toAngle - fromAngle, range: 360, minMax: (0, 360))
+            let scaledDuration = (NSTimeInterval(traveledAngle) * duration) / 360
+            animationDuration = scaledDuration
         }
 
         let animation = CABasicAnimation(keyPath: "angle")
         animation.fromValue = fromAngle
         animation.toValue = toAngle
-        animation.duration = duration
+        animation.duration = animationDuration
         animation.delegate = self
         angle = toAngle
         animationCompletionBlock = completion
@@ -244,11 +253,11 @@ public class KDCircularProgress: UIView {
         progressLayer.addAnimation(animation, forKey: "angle")
     }
     
-    public func animateToAngle(toAngle: Int, duration: NSTimeInterval, completion: ((Bool) -> Void)?) {
+    public func animateToAngle(toAngle: Int, duration: NSTimeInterval, relativeDuration: Bool = true, completion: ((Bool) -> Void)?) {
         if isAnimating() {
             pauseAnimation()
         }
-        animateFromAngle(angle, toAngle: toAngle, duration: duration, completion: completion)
+        animateFromAngle(angle, toAngle: toAngle, duration: duration, relativeDuration: relativeDuration, completion: completion)
     }
     
     public func pauseAnimation() {
