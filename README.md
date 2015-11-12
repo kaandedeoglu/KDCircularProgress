@@ -8,8 +8,9 @@ Here's an example
 [Youtube Link](http://youtu.be/iIdas72MXOg)
 
 
-[![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot.png)](http://youtu.be/iIdas72MXOg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot.gif)
 
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot.png)
 ![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot2.jpg)
 ![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot3.jpg)
 ![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot4.jpg)
