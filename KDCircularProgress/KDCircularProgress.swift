@@ -171,19 +171,19 @@ public class KDCircularProgress: UIView {
         self.init(frame: frame)
         setColors(colors)
     }
-
+    
     required public init(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)!
-		translatesAutoresizingMaskIntoConstraints = false
-		userInteractionEnabled = false
-		setInitialValues()
+        super.init(coder: aDecoder)!
+        translatesAutoresizingMaskIntoConstraints = false
+        userInteractionEnabled = false
+        setInitialValues()
         refreshValues()
-	}
+    }
     
     public override func awakeFromNib() {
         checkAndSetIBColors()
     }
-	
+    
     override public class func layerClass() -> AnyClass {
         return KDCircularProgressViewLayer.self
     }
@@ -235,13 +235,13 @@ public class KDCircularProgress: UIView {
         
         let animationDuration: NSTimeInterval
         if relativeDuration {
-           animationDuration = duration
+            animationDuration = duration
         } else {
             let traveledAngle = UtilityFunctions.Mod(toAngle - fromAngle, range: 360, minMax: (0, 360))
             let scaledDuration = (NSTimeInterval(traveledAngle) * duration) / 360
             animationDuration = scaledDuration
         }
-
+        
         let animation = CABasicAnimation(keyPath: "angle")
         animation.fromValue = fromAngle
         animation.toValue = toAngle
@@ -373,12 +373,13 @@ public class KDCircularProgress: UIView {
             trackThickness = progressLayer.trackThickness
             trackColor = progressLayer.trackColor
             colorsArray = progressLayer.colorsArray
+            progressInsideFillColor = progressLayer.progressInsideFillColor
         }
-
+        
         override init() {
             super.init()
         }
-
+        
         required init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)
         }
@@ -398,7 +399,7 @@ public class KDCircularProgress: UIView {
             CGContextSetLineWidth(ctx, trackLineWidth)
             CGContextSetLineCap(ctx, CGLineCap.Butt)
             CGContextDrawPath(ctx, .FillStroke)
-
+            
             UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
             let imageCtx = UIGraphicsGetCurrentContext()
             let reducedAngle = UtilityFunctions.Mod(angle, range: 360, minMax: (0, 360))
@@ -457,7 +458,7 @@ public class KDCircularProgress: UIView {
             let baseSpace = CGColorSpaceCreateDeviceRGB()
             let locations = locationsCache ?? gradientLocationsFromColorCount(componentsArray.count/4, gradientWidth: bounds.size.width)
             let gradient: CGGradient
-
+            
             if let g = self.gradientCache {
                 gradient = g
             } else {
