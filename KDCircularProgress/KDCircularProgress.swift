@@ -261,7 +261,7 @@ public class KDCircularProgress: UIView {
     }
     
     public func pauseAnimation() {
-        let presentationLayer = progressLayer.presentationLayer() as! KDCircularProgressViewLayer
+        guard let presentationLayer = progressLayer.presentationLayer() as? KDCircularProgressViewLayer else { return }
         let currentValue = presentationLayer.angle
         progressLayer.removeAllAnimations()
         animationCompletionBlock = nil
