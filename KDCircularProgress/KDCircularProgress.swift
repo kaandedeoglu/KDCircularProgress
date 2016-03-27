@@ -45,8 +45,8 @@ public class KDCircularProgress: UIView {
             return (minMax.1 - minMax.0) * value + minMax.0
         }
         
-        static func ColorLerp(var value: CGFloat, minMax: (UIColor, UIColor)) -> UIColor {
-            value = Clamp(value, minMax: (0, 1))
+        static func ColorLerp(value: CGFloat, minMax: (UIColor, UIColor)) -> UIColor {
+            let clampedValue = Clamp(value, minMax: (0, 1))
             
             let zero: CGFloat = 0
             
@@ -56,7 +56,7 @@ public class KDCircularProgress: UIView {
             var (r1, g1, b1, a1) = (zero, zero, zero, zero)
             minMax.1.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
             
-            return UIColor(red: Lerp(value, minMax: (r0, r1)), green: Lerp(value, minMax: (g0, g1)), blue: Lerp(value, minMax: (b0, b1)), alpha: Lerp(value, minMax: (a0, a1)))
+            return UIColor(red: Lerp(clampedValue, minMax: (r0, r1)), green: Lerp(clampedValue, minMax: (g0, g1)), blue: Lerp(clampedValue, minMax: (b0, b1)), alpha: Lerp(clampedValue, minMax: (a0, a1)))
         }
         
         static func Mod(value: Int, range: Int, minMax: (Int, Int)) -> Int {
