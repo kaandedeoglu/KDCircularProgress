@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sliderDidChangeValue(sender: UISlider) {
-        progress.angle = Int(sender.value)
+        progress.angle = Double(sender.value)
     }
     
     @IBAction func animateButtonTapped(sender: UIButton) {

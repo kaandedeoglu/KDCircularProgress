@@ -59,7 +59,7 @@ public class KDCircularProgress: UIView {
             return UIColor(red: Lerp(clampedValue, minMax: (r0, r1)), green: Lerp(clampedValue, minMax: (g0, g1)), blue: Lerp(clampedValue, minMax: (b0, b1)), alpha: Lerp(clampedValue, minMax: (a0, a1)))
         }
         
-        static func Mod(value: Int, range: Int, minMax: (Int, Int)) -> Int {
+        static func Mod(value: Double, range: Double, minMax: (Double, Double)) -> Double {
             let (min, max) = minMax
             assert(abs(range) <= abs(max - min), "range should be <= than the interval")
             if value >= min && value <= max {
@@ -84,7 +84,7 @@ public class KDCircularProgress: UIView {
         }
     }
     
-    @IBInspectable public var angle: Int = 0 {
+    @IBInspectable public var angle: Double = 0 {
         didSet {
             if self.isAnimating() {
                 self.pauseAnimation()
@@ -93,7 +93,7 @@ public class KDCircularProgress: UIView {
         }
     }
     
-    @IBInspectable public var startAngle: Int = 0 {
+    @IBInspectable public var startAngle: Double = 0 {
         didSet {
             progressLayer.startAngle = UtilityFunctions.Mod(startAngle, range: 360, minMax: (0,360))
             progressLayer.setNeedsDisplay()
@@ -257,7 +257,7 @@ public class KDCircularProgress: UIView {
         progressLayer.setNeedsDisplay()
     }
     
-    public func animateFromAngle(fromAngle: Int, toAngle: Int, duration: NSTimeInterval, relativeDuration: Bool = true, completion: ((Bool) -> Void)?) {
+    public func animateFromAngle(fromAngle: Double, toAngle: Double, duration: NSTimeInterval, relativeDuration: Bool = true, completion: ((Bool) -> Void)?) {
         if isAnimating() {
             pauseAnimation()
         }
@@ -282,7 +282,7 @@ public class KDCircularProgress: UIView {
         progressLayer.addAnimation(animation, forKey: "angle")
     }
     
-    public func animateToAngle(toAngle: Int, duration: NSTimeInterval, relativeDuration: Bool = true, completion: ((Bool) -> Void)?) {
+    public func animateToAngle(toAngle: Double, duration: NSTimeInterval, relativeDuration: Bool = true, completion: ((Bool) -> Void)?) {
         if isAnimating() {
             pauseAnimation()
         }
@@ -333,13 +333,13 @@ public class KDCircularProgress: UIView {
     }
     
     private class KDCircularProgressViewLayer: CALayer {
-        @NSManaged var angle: Int
+        @NSManaged var angle: Double
         var radius: CGFloat! {
             didSet {
                 invalidateGradientCache()
             }
         }
-        var startAngle: Int!
+        var startAngle: Double!
         var clockwise: Bool! {
             didSet {
                 if clockwise != oldValue {
@@ -370,7 +370,7 @@ public class KDCircularProgress: UIView {
         
         private struct GlowConstants {
             private static let sizeToGlowRatio: CGFloat = 0.00015
-            static func glowAmountForAngle(angle: Int, glowAmount: CGFloat, glowMode: KDCircularProgressGlowMode, size: CGFloat) -> CGFloat {
+            static func glowAmountForAngle(angle: Double, glowAmount: CGFloat, glowMode: KDCircularProgressGlowMode, size: CGFloat) -> CGFloat {
                 switch glowMode {
                 case .Forward:
                     return CGFloat(angle) * size * sizeToGlowRatio * glowAmount
