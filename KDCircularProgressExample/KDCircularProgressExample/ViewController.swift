@@ -22,19 +22,19 @@ class ViewController: UIViewController {
         progress.clockwise = true
         progress.gradientRotateSpeed = 2
         progress.roundedCorners = false
-        progress.glowMode = .Forward
+        progress.glowMode = .forward
         progress.glowAmount = 0.9
-        progress.setColors(UIColor.cyanColor() ,UIColor.whiteColor(), UIColor.magentaColor(), UIColor.whiteColor(), UIColor.orangeColor())
+        progress.setColors(colors: UIColor.cyan() ,UIColor.white(), UIColor.magenta(), UIColor.white(), UIColor.orange())
         progress.center = CGPoint(x: view.center.x, y: view.center.y + 25)
         view.addSubview(progress)
     }
     
-    @IBAction func sliderDidChangeValue(sender: UISlider) {
+    @IBAction func sliderDidChangeValue(_ sender: UISlider) {
         progress.angle = Double(sender.value)
     }
     
-    @IBAction func animateButtonTapped(sender: UIButton) {
-        progress.animateFromAngle(0, toAngle: 360, duration: 5) { completed in
+    @IBAction func animateButtonTapped(_ sender: UIButton) {
+        progress.animate(fromAngle: 0, toAngle: 360, duration: 5) { completed in
             if completed {
                 print("animation stopped, completed")
             } else {
