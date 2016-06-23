@@ -311,7 +311,10 @@ public class KDCircularProgress: UIView {
     override public func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         if let completionBlock = animationCompletionBlock {
             completionBlock(flag)
-            animationCompletionBlock = nil
+            
+            if flag {
+               animationCompletionBlock = nil
+            }
         }
     }
     
