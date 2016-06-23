@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     var progress: KDCircularProgress!
     
     override func viewDidLoad() {
