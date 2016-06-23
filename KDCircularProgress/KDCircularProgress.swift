@@ -310,8 +310,8 @@ public class KDCircularProgress: UIView {
         if let completionBlock = animationCompletionBlock {
             completionBlock(flag)
             
-            if flag == true { // hskim: It works fine after doing cancel. (2016/5/29 16:00)
-                animationCompletionBlock = nil
+            if flag {
+               animationCompletionBlock = nil
             }
         }
     }
