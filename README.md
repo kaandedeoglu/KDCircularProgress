@@ -36,6 +36,25 @@ view.addSubview(progress)
 ## Installation
 - It's on CocoaPods under the name (you guessed it!) KDCircularProgress
 - Just drag `KDCircularProgress.swift` into your project. `Carthage` support is on To-do list.
+## Installation
+
+### CocoaPods
+
+KDCircularProgress is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'KDCircularProgress'
+```
+
+### Manually
+
+Just drag `KDCircularProgress.swift` into your project.
+
+### Carthage
+
+`Carthage` support is on To-do list.
+
 
 ## Properties
 
