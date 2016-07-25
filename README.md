@@ -36,7 +36,6 @@ view.addSubview(progress)
 ## Installation
 - It's on CocoaPods under the name (you guessed it!) KDCircularProgress
 - Just drag `KDCircularProgress.swift` into your project. `Carthage` support is on To-do list.
-## Installation
 
 ### CocoaPods
 
