@@ -13,7 +13,7 @@ public enum KDCircularProgressGlowMode {
 }
 
 @IBDesignable
-public class KDCircularProgress: UIView {
+public class KDCircularProgress: UIView, CAAnimationDelegate {
     
     private struct Conversion {
         static func degreesToRadians (value:CGFloat) -> CGFloat {
@@ -149,7 +149,7 @@ public class KDCircularProgress: UIView {
         }
     }
     
-    @IBInspectable public var trackColor: UIColor = .black() {
+    @IBInspectable public var trackColor: UIColor = .black {
         didSet {
             progressLayer.trackColor = trackColor
             progressLayer.setNeedsDisplay()
@@ -161,7 +161,7 @@ public class KDCircularProgress: UIView {
             if let color = progressInsideFillColor {
                 progressLayer.progressInsideFillColor = color
             } else {
-                progressLayer.progressInsideFillColor = .clear()
+                progressLayer.progressInsideFillColor = .clear
             }
         }
     }
@@ -209,7 +209,7 @@ public class KDCircularProgress: UIView {
         checkAndSetIBColors()
     }
     
-    override public class func layerClass() -> AnyClass {
+    override public class var layerClass: AnyClass {
         return KDCircularProgressViewLayer.self
     }
     
@@ -220,8 +220,8 @@ public class KDCircularProgress: UIView {
     
     private func setInitialValues() {
         radius = (frame.size.width/2.0) * 0.8 //We always apply a 20% padding, stopping glows from being clipped
-        backgroundColor = .clear()
-        setColors(colors: .white(), .cyan())
+        backgroundColor = .clear
+        setColors(colors: .white, .cyan)
     }
     
     private func refreshValues() {
@@ -305,7 +305,7 @@ public class KDCircularProgress: UIView {
         return progressLayer.animation(forKey: "angle") != nil
     }
     
-    override public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let completionBlock = animationCompletionBlock {
             if flag {
                animationCompletionBlock = nil
@@ -361,7 +361,7 @@ public class KDCircularProgress: UIView {
         var progressThickness: CGFloat!
         var trackThickness: CGFloat!
         var trackColor: UIColor!
-        var progressInsideFillColor = UIColor.clear()
+        var progressInsideFillColor = UIColor.clear
         var colorsArray: [UIColor]! {
             didSet {
                 invalidateGradientCache()
@@ -390,7 +390,7 @@ public class KDCircularProgress: UIView {
             return key == "angle" ? true : super.needsDisplay(forKey: key)
         }
         
-        override init(layer: AnyObject) {
+        override init(layer: Any) {
             super.init(layer: layer)
             let progressLayer = layer as! KDCircularProgressViewLayer
             radius = progressLayer.radius
@@ -427,7 +427,7 @@ public class KDCircularProgress: UIView {
             let trackLineWidth = radius * trackThickness
             let progressLineWidth = radius * progressThickness
             let arcRadius = max(radius - trackLineWidth/2, radius - progressLineWidth/2)
-            ctx.addArc(centerX: width/2.0, y: height/2.0, radius: arcRadius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: 0)
+            ctx.addArc(center: CGPoint(x: width/2.0, y: height/2.0), radius: arcRadius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: false)
             trackColor.set()
             ctx.setStrokeColor(trackColor.cgColor)
             ctx.setFillColor(progressInsideFillColor.cgColor)
@@ -442,11 +442,11 @@ public class KDCircularProgress: UIView {
             let fromAngle = Conversion.degreesToRadians(value: CGFloat(-startAngle))
             let toAngle = Conversion.degreesToRadians(value: CGFloat((clockwise == true ? -reducedAngle : reducedAngle) - startAngle))
             
-            imageCtx?.addArc(centerX: width/2.0, y: height/2.0, radius: arcRadius, startAngle: fromAngle, endAngle: toAngle, clockwise: clockwise == true ? 1 : 0)
+            imageCtx?.addArc(center: CGPoint(x: width/2.0, y: height/2.0), radius: arcRadius, startAngle: fromAngle, endAngle: toAngle, clockwise: clockwise)
             
             let glowValue = GlowConstants.glowAmount(forAngle: reducedAngle, glowAmount: glowAmount, glowMode: glowMode, size: width)
             if glowValue > 0 {
-                imageCtx?.setShadow(offset: CGSize.zero, blur: glowValue, color: UIColor.black().cgColor)
+                imageCtx?.setShadow(offset: CGSize.zero, blur: glowValue, color: UIColor.black.cgColor)
             }
             
             let linecap: CGLineCap = roundedCorners == true ? .round : .butt
@@ -458,7 +458,7 @@ public class KDCircularProgress: UIView {
             UIGraphicsEndImageContext()
             
             ctx.saveGState()
-            ctx.clipToMask(bounds, mask: drawMask)
+            ctx.clip(to: bounds, mask: drawMask)
             
             //Gradient - Fill
             if !lerpColorMode && colorsArray.count > 1 {
@@ -475,7 +475,7 @@ public class KDCircularProgress: UIView {
                 }
                 
                 let componentsArray = rgbColorsArray.flatMap { color -> [CGFloat] in
-                    let components: UnsafePointer<CGFloat> = color.cgColor.components!
+                    guard let components = color.cgColor.components else { return [] }
                     return [components[0], components[1], components[2], 1.0]
                 }
                 
@@ -483,7 +483,7 @@ public class KDCircularProgress: UIView {
             } else {
                 var color: UIColor?
                 if colorsArray.isEmpty {
-                    color = UIColor.white()
+                    color = UIColor.white
                 } else if colorsArray.count == 1 {
                     color = colorsArray[0]
                 } else {
@@ -522,7 +522,7 @@ public class KDCircularProgress: UIView {
             if let cachedGradient = gradientCache {
                 gradient = cachedGradient
             } else {
-                guard let cachedGradient = CGGradient(colorComponentsSpace: baseSpace, components: componentsArray, locations: locations,count: componentsArray.count / 4) else {
+                guard let cachedGradient = CGGradient(colorSpace: baseSpace, colorComponents: componentsArray, locations: locations, count: componentsArray.count/4) else {
                     return
                 }
                 
