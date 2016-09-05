@@ -509,7 +509,6 @@ public class KDCircularProgress: UIView,CAAnimationDelegate {
                     fillRectWithContext(ctx, color: color)
                 }
             }
-            
             CGContextRestoreGState(ctx)
             UIGraphicsPopContext()
         }
