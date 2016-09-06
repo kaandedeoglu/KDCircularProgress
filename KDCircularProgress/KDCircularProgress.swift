@@ -13,7 +13,7 @@ public enum KDCircularProgressGlowMode {
 }
 
 @IBDesignable
-public class KDCircularProgress: UIView {
+public class KDCircularProgress: UIView,CAAnimationDelegate {
     
     private struct Conversion {
         static func degreesToRadians (value:CGFloat) -> CGFloat {
@@ -291,7 +291,7 @@ public class KDCircularProgress: UIView {
     }
     
     public func pauseAnimation() {
-        guard let presentationLayer = progressLayer.presentationLayer() as? KDCircularProgressViewLayer else { return }
+        guard let presentationLayer = progressLayer.presentationLayer() else { return }
         let currentValue = presentationLayer.angle
         progressLayer.removeAllAnimations()
         animationCompletionBlock = nil
@@ -308,10 +308,10 @@ public class KDCircularProgress: UIView {
         return progressLayer.animationForKey("angle") != nil
     }
     
-    override public func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    public func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         if let completionBlock = animationCompletionBlock {
             if flag {
-               animationCompletionBlock = nil
+                animationCompletionBlock = nil
             }
             
             completionBlock(flag)
@@ -439,28 +439,34 @@ public class KDCircularProgress: UIView {
             CGContextDrawPath(ctx, .FillStroke)
             
             UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-            
-            let imageCtx = UIGraphicsGetCurrentContext()
             let reducedAngle = Utility.mod(angle, range: 360, minMax: (0, 360))
-            let fromAngle = Conversion.degreesToRadians(CGFloat(-startAngle))
-            let toAngle = Conversion.degreesToRadians(CGFloat((clockwise == true ? -reducedAngle : reducedAngle) - startAngle))
             
-            CGContextAddArc(imageCtx, width/2.0, height/2.0, arcRadius, fromAngle, toAngle, clockwise == true ? 1 : 0)
-            
-            let glowValue = GlowConstants.glowAmountForAngle(reducedAngle, glowAmount: glowAmount, glowMode: glowMode, size: width)
-            if glowValue > 0 {
-                CGContextSetShadowWithColor(imageCtx, CGSizeZero, glowValue, UIColor.blackColor().CGColor)
+            if let imageCtx = UIGraphicsGetCurrentContext(){
+                let fromAngle = Conversion.degreesToRadians(CGFloat(-startAngle))
+                let toAngle = Conversion.degreesToRadians(CGFloat((clockwise == true ? -reducedAngle : reducedAngle) - startAngle))
+                
+                CGContextAddArc(imageCtx, width/2.0, height/2.0, arcRadius, fromAngle, toAngle, clockwise == true ? 1 : 0)
+                
+                let glowValue = GlowConstants.glowAmountForAngle(reducedAngle, glowAmount: glowAmount, glowMode: glowMode, size: width)
+                if glowValue > 0 {
+                    CGContextSetShadowWithColor(imageCtx, CGSizeZero, glowValue, UIColor.blackColor().CGColor)
+                }
+                CGContextSetLineCap(imageCtx, roundedCorners == true ? .Round : .Butt)
+                CGContextSetLineWidth(imageCtx, progressLineWidth)
+                CGContextDrawPath(imageCtx, .Stroke)
+                
+                guard let currentGraphicsContext = UIGraphicsGetCurrentContext() else{
+                    return
+                }
+                
+                if let drawMask: CGImageRef = CGBitmapContextCreateImage(currentGraphicsContext){
+                    UIGraphicsEndImageContext()
+                    CGContextSaveGState(ctx)
+                    CGContextClipToMask(ctx, bounds, drawMask)
+                }else{
+                    UIGraphicsEndImageContext()
+                }
             }
-            CGContextSetLineCap(imageCtx, roundedCorners == true ? .Round : .Butt)
-            CGContextSetLineWidth(imageCtx, progressLineWidth)
-            CGContextDrawPath(imageCtx, .Stroke)
-            
-            let drawMask: CGImageRef = CGBitmapContextCreateImage(UIGraphicsGetCurrentContext())!
-            UIGraphicsEndImageContext()
-            
-            CGContextSaveGState(ctx)
-            CGContextClipToMask(ctx, bounds, drawMask)
-            
             //Gradient - Fill
             if !lerpColorMode && colorsArray.count > 1 {
                 let rgbColorsArray: [UIColor] = colorsArray.map { color in // Make sure every color in colors array is in RGB color space
