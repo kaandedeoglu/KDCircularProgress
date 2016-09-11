@@ -80,6 +80,14 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
     }
     
+    public var progress: Double = 0 {
+        didSet {
+            if progress >= 0.0 && progress <= 1.0 {
+                angle = 360*progress
+            }
+        }
+    }
+    
     @IBInspectable public var angle: Double = 0 {
         didSet {
             if self.isAnimating() {

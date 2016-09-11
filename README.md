@@ -162,7 +162,7 @@ Prefering light colors in the gradients gives better results. As mentioned befor
 - [ ] Carthage Support
 - [x] CocoaPods Support
 - [x] IBDesignable/IBInspectable support
-- [ ] Adding a `progress` property as an alternative to `angle`
+- [X] Adding a `progress` property as an alternative to `angle`
 - [ ] Clean up
 
 ##Contact
