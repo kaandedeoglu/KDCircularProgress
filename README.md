@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/KDCircularProgress.svg?style=flat)](http://cocoapods.org/pods/KDCircularProgress)
 
 >
-`KDCircularProgress` master branch is now compatible with Swift 3. Check Swift 2 & Swift 2.3 branches for older versions.
+`KDCircularProgress` master branch is now compatible with Swift 3 (tag 1.5.0). Check Swift 2 (tag 1.4.1) & Swift 2.3 (tag 1.4.5) branches for older versions.
 
 
 `KDCircularProgress` is a circular progress view written in Swift. It makes it possible to have gradients in the progress view, along with glows and animations.
