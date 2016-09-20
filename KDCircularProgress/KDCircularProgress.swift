@@ -15,13 +15,13 @@ public enum KDCircularProgressGlowMode {
 @IBDesignable
 public class KDCircularProgress: UIView, CAAnimationDelegate {
     
-    private struct Conversion {
+    private enum Conversion {
         static func degreesToRadians (value:CGFloat) -> CGFloat {
             return value * CGFloat.pi / 180.0
         }
     }
     
-    private struct Utility {
+    private enum Utility {
         static func clamp<T: Comparable>(value: T, minMax: (T, T)) -> T {
             let (min, max) = minMax
             if value < min {
@@ -44,7 +44,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         static func colorLerp(value: CGFloat, minMax: (UIColor, UIColor)) -> UIColor {
             let clampedValue = clamp(value: value, minMax: (0, 1))
             
-            let zero: CGFloat = 0
+            let zero = CGFloat(0)
             
             var (r0, g0, b0, a0) = (zero, zero, zero, zero)
             minMax.0.getRed(&r0, green: &g0, blue: &b0, alpha: &a0)
@@ -83,7 +83,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     public var progress: Double = 0 {
         didSet {
             let clampedProgress = Utility.clamp(value: progress, minMax: (0, 1))
-                angle = 360*clampedProgress
+                angle = 360 * clampedProgress
         }
     }
     
@@ -165,11 +165,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     
     @IBInspectable public var progressInsideFillColor: UIColor? = nil {
         didSet {
-            if let color = progressInsideFillColor {
-                progressLayer.progressInsideFillColor = color
-            } else {
-                progressLayer.progressInsideFillColor = .clear
-            }
+            progressLayer.progressInsideFillColor = progressInsideFillColor ?? .clear
         }
     }
     
@@ -178,7 +174,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
             return progressLayer.colorsArray
         }
         
-        set(newValue) {
+        set {
             setColors(colors: newValue)
         }
     }
@@ -298,12 +294,10 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         
         let currentValue = presentationLayer.angle
         progressLayer.removeAllAnimations()
-        animationCompletionBlock = nil
         angle = currentValue
     }
     
     public func stopAnimation() {
-        animationCompletionBlock = nil
         progressLayer.removeAllAnimations()
         angle = 0
     }
@@ -314,10 +308,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let completionBlock = animationCompletionBlock {
-            if flag {
-               animationCompletionBlock = nil
-            }
-            
+            animationCompletionBlock = nil
             completionBlock(flag)
         }
     }
@@ -377,7 +368,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         private var gradientCache: CGGradient?
         private var locationsCache: [CGFloat]?
         
-        private struct GlowConstants {
+        private enum GlowConstants {
             private static let sizeToGlowRatio: CGFloat = 0.00015
             static func glowAmount(forAngle angle: Double, glowAmount: CGFloat, glowMode: KDCircularProgressGlowMode, size: CGFloat) -> CGFloat {
                 switch glowMode {
