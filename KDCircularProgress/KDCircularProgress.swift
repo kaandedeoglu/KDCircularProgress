@@ -74,7 +74,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
     }
     
-    private var radius: CGFloat! {
+    private var radius: CGFloat = 0 {
         didSet {
             progressLayer.radius = radius
         }
@@ -169,7 +169,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
     }
     
-    @IBInspectable public var progressColors: [UIColor]! {
+    @IBInspectable public var progressColors: [UIColor] {
         get {
             return progressLayer.colorsArray
         }
@@ -334,33 +334,33 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     
     private class KDCircularProgressViewLayer: CALayer {
         @NSManaged var angle: Double
-        var radius: CGFloat! {
+        var radius: CGFloat = 0 {
             didSet {
                 invalidateGradientCache()
             }
         }
-        var startAngle: Double!
-        var clockwise: Bool! {
+        var startAngle: Double = 0
+        var clockwise: Bool = true {
             didSet {
                 if clockwise != oldValue {
                     invalidateGradientCache()
                 }
             }
         }
-        var roundedCorners: Bool!
-        var lerpColorMode: Bool!
-        var gradientRotateSpeed: CGFloat! {
+        var roundedCorners: Bool = true
+        var lerpColorMode: Bool = false
+        var gradientRotateSpeed: CGFloat = 0 {
             didSet {
                 invalidateGradientCache()
             }
         }
-        var glowAmount: CGFloat!
-        var glowMode: KDCircularProgressGlowMode!
-        var progressThickness: CGFloat!
-        var trackThickness: CGFloat!
-        var trackColor: UIColor!
-        var progressInsideFillColor = UIColor.clear
-        var colorsArray: [UIColor]! {
+        var glowAmount: CGFloat = 0
+        var glowMode: KDCircularProgressGlowMode = .forward
+        var progressThickness: CGFloat = 0.5
+        var trackThickness: CGFloat = 0.5
+        var trackColor: UIColor = .black
+        var progressInsideFillColor: UIColor = .clear
+        var colorsArray: [UIColor] = [] {
             didSet {
                 invalidateGradientCache()
             }
@@ -531,7 +531,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
             let halfX = bounds.size.width / 2.0
             let floatPi = CGFloat.pi
             let rotateSpeed = clockwise == true ? gradientRotateSpeed : gradientRotateSpeed * -1
-            let angleInRadians = Conversion.degreesToRadians(value: rotateSpeed! * CGFloat(angle) - 90)
+            let angleInRadians = Conversion.degreesToRadians(value: rotateSpeed * CGFloat(angle) - 90)
             let oppositeAngle = angleInRadians > floatPi ? angleInRadians - floatPi : angleInRadians + floatPi
             
             let startPoint = CGPoint(x: (cos(angleInRadians) * halfX) + halfX, y: (sin(angleInRadians) * halfX) + halfX)
