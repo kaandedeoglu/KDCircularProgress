@@ -14,6 +14,16 @@
 		BC5B0C271D92F75600B43506 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC5B0C251D92F75600B43506 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BC6FF0C61D92FEA9002E6571 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC5B0C2E1D92F76E00B43506 /* KDCircularProgress.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC5B0BE81D92F4FA00B43506;
+			remoteInfo = "KDCircularProgress iOS";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		BC5B0C191D92F75600B43506 /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5B0C1C1D92F75600B43506 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +76,14 @@
 			path = "iOS Example";
 			sourceTree = "<group>";
 		};
+		BC6FF0C21D92FEA8002E6571 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC6FF0C71D92FEA9002E6571 /* KDCircularProgress.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,12 +131,28 @@
 			mainGroup = BC5B0C101D92F75600B43506;
 			productRefGroup = BC5B0C1A1D92F75600B43506 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BC6FF0C21D92FEA8002E6571 /* Products */;
+					ProjectRef = BC5B0C2E1D92F76E00B43506 /* KDCircularProgress.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BC5B0C181D92F75600B43506 /* iOS Example */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BC6FF0C71D92FEA9002E6571 /* KDCircularProgress.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = KDCircularProgress.framework;
+			remoteRef = BC6FF0C61D92FEA9002E6571 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BC5B0C171D92F75600B43506 /* Resources */ = {
@@ -299,6 +333,7 @@
 				BC5B0C2D1D92F75600B43506 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
