@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC5B0BB61D92F25600B43506 /* KDCircularProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = BC5B0BB41D92F25600B43506 /* KDCircularProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC9E758C1A8CE4A500B1DF3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E758B1A8CE4A500B1DF3D /* AppDelegate.swift */; };
 		BC9E758E1A8CE4A500B1DF3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E758D1A8CE4A500B1DF3D /* ViewController.swift */; };
 		BC9E75911A8CE4A500B1DF3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9E758F1A8CE4A500B1DF3D /* Main.storyboard */; };
@@ -27,6 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC5B0BB21D92F25600B43506 /* KDCircularProgress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KDCircularProgress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC5B0BB41D92F25600B43506 /* KDCircularProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCircularProgress.h; sourceTree = "<group>"; };
+		BC5B0BB51D92F25600B43506 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC9E75861A8CE4A500B1DF3D /* KDCircularProgressExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KDCircularProgressExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC9E758A1A8CE4A500B1DF3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC9E758B1A8CE4A500B1DF3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +45,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BC5B0BAE1D92F25600B43506 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC9E75831A8CE4A500B1DF3D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,11 +69,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC5B0BB31D92F25600B43506 /* KDCircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				BC5B0BB41D92F25600B43506 /* KDCircularProgress.h */,
+				BC5B0BB51D92F25600B43506 /* Info.plist */,
+			);
+			path = KDCircularProgress;
+			sourceTree = "<group>";
+		};
 		BC9E757D1A8CE4A500B1DF3D = {
 			isa = PBXGroup;
 			children = (
 				BC9E75881A8CE4A500B1DF3D /* KDCircularProgressExample */,
 				BC9E759E1A8CE4A500B1DF3D /* KDCircularProgressExampleTests */,
+				BC5B0BB31D92F25600B43506 /* KDCircularProgress */,
 				BC9E75871A8CE4A500B1DF3D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +93,7 @@
 			children = (
 				BC9E75861A8CE4A500B1DF3D /* KDCircularProgressExample.app */,
 				BC9E759B1A8CE4A500B1DF3D /* KDCircularProgressExampleTests.xctest */,
+				BC5B0BB21D92F25600B43506 /* KDCircularProgress.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,7 +148,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		BC5B0BAF1D92F25600B43506 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC5B0BB61D92F25600B43506 /* KDCircularProgress.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		BC5B0BB11D92F25600B43506 /* KDCircularProgress */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC5B0BB91D92F25600B43506 /* Build configuration list for PBXNativeTarget "KDCircularProgress" */;
+			buildPhases = (
+				BC5B0BAD1D92F25600B43506 /* Sources */,
+				BC5B0BAE1D92F25600B43506 /* Frameworks */,
+				BC5B0BAF1D92F25600B43506 /* Headers */,
+				BC5B0BB01D92F25600B43506 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KDCircularProgress;
+			productName = KDCircularProgress;
+			productReference = BC5B0BB21D92F25600B43506 /* KDCircularProgress.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		BC9E75851A8CE4A500B1DF3D /* KDCircularProgressExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC9E75A51A8CE4A500B1DF3D /* Build configuration list for PBXNativeTarget "KDCircularProgressExample" */;
@@ -172,6 +223,10 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Kaan Dedeoglu";
 				TargetAttributes = {
+					BC5B0BB11D92F25600B43506 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
 					BC9E75851A8CE4A500B1DF3D = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = N7Y3X223PM;
@@ -200,11 +255,19 @@
 			targets = (
 				BC9E75851A8CE4A500B1DF3D /* KDCircularProgressExample */,
 				BC9E759A1A8CE4A500B1DF3D /* KDCircularProgressExampleTests */,
+				BC5B0BB11D92F25600B43506 /* KDCircularProgress */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BC5B0BB01D92F25600B43506 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC9E75841A8CE4A500B1DF3D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,6 +288,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BC5B0BAD1D92F25600B43506 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC9E75821A8CE4A500B1DF3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,6 +343,65 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BC5B0BB71D92F25600B43506 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = KDCircularProgress/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kaandedeoglu.KDCircularProgress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BC5B0BB81D92F25600B43506 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = KDCircularProgress/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kaandedeoglu.KDCircularProgress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		BC9E75A31A8CE4A500B1DF3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -420,6 +549,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BC5B0BB91D92F25600B43506 /* Build configuration list for PBXNativeTarget "KDCircularProgress" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC5B0BB71D92F25600B43506 /* Debug */,
+				BC5B0BB81D92F25600B43506 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		BC9E75811A8CE4A500B1DF3D /* Build configuration list for PBXProject "KDCircularProgressExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
