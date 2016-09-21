@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:KDCircularProgressExample.xcodeproj">
+      location = "self:KDCircularProgress.xcodeproj">
    </FileRef>
 </Workspace>

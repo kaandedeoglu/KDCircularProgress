@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC5B0BB11D92F25600B43506"
+               BlueprintIdentifier = "BC5B0BE71D92F4FA00B43506"
                BuildableName = "KDCircularProgress.framework"
-               BlueprintName = "KDCircularProgress"
-               ReferencedContainer = "container:KDCircularProgressExample.xcodeproj">
+               BlueprintName = "KDCircularProgress iOS"
+               ReferencedContainer = "container:KDCircularProgress.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BC5B0BB11D92F25600B43506"
+            BlueprintIdentifier = "BC5B0BE71D92F4FA00B43506"
             BuildableName = "KDCircularProgress.framework"
-            BlueprintName = "KDCircularProgress"
-            ReferencedContainer = "container:KDCircularProgressExample.xcodeproj">
+            BlueprintName = "KDCircularProgress iOS"
+            ReferencedContainer = "container:KDCircularProgress.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BC5B0BB11D92F25600B43506"
+            BlueprintIdentifier = "BC5B0BE71D92F4FA00B43506"
             BuildableName = "KDCircularProgress.framework"
-            BlueprintName = "KDCircularProgress"
-            ReferencedContainer = "container:KDCircularProgressExample.xcodeproj">
+            BlueprintName = "KDCircularProgress iOS"
+            ReferencedContainer = "container:KDCircularProgress.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9wL-Dp-scG">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Fjt-bB-ckB">
+            <objects>
+                <viewController id="9wL-Dp-scG" customClass="ViewController" customModule="iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g4C-sr-w9g"/>
+                        <viewControllerLayoutGuide type="bottom" id="yjB-on-Hkq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nbo-Tj-Bre">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="GNJ-D7-iKp">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="194" id="Ngq-EV-BQc"/>
+                                    <constraint firstAttribute="height" constant="30" id="i7l-jw-4bx"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderDidChangeValue:" destination="9wL-Dp-scG" eventType="valueChanged" id="NsE-GI-Orr"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ev-GJ-qTG">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="Zrl-Sg-9Zb"/>
+                                    <constraint firstAttribute="height" constant="30" id="xHF-qf-Hbd"/>
+                                </constraints>
+                                <state key="normal" title="Animate">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="animateButtonTapped:" destination="9wL-Dp-scG" eventType="touchUpInside" id="Av2-DJ-CaL"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UvS-lo-pbU" customClass="KDCircularProgress" customModule="KDCircularProgress">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UvS-lo-pbU" secondAttribute="height" multiplier="1:1" id="uuX-Hh-HwZ"/>
+                                    <constraint firstAttribute="width" constant="200" id="zDC-WB-HLr"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                        <integer key="value" value="320"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                                        <color key="value" red="0.97441762909999996" green="1" blue="0.31255436479999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="IBColor2">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="IBColor3">
+                                        <color key="value" red="0.085719833810000007" green="0.98039215690000003" blue="0.396044703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <integer key="value" value="-90"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientRotateSpeed">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.47366009079999999" green="0.47366009079999999" blue="0.47366009079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="9ev-GJ-qTG" secondAttribute="centerX" id="9yk-kN-NUL"/>
+                            <constraint firstItem="yjB-on-Hkq" firstAttribute="top" secondItem="9ev-GJ-qTG" secondAttribute="bottom" constant="15" id="DSI-Wt-vfI"/>
+                            <constraint firstAttribute="centerX" secondItem="UvS-lo-pbU" secondAttribute="centerX" id="FlC-G1-Xy3"/>
+                            <constraint firstItem="UvS-lo-pbU" firstAttribute="top" secondItem="g4C-sr-w9g" secondAttribute="bottom" id="dqi-TN-cym"/>
+                            <constraint firstAttribute="centerX" secondItem="GNJ-D7-iKp" secondAttribute="centerX" id="p8v-RV-Bqd"/>
+                            <constraint firstItem="9ev-GJ-qTG" firstAttribute="top" secondItem="GNJ-D7-iKp" secondAttribute="bottom" constant="15" id="wOd-cK-tlp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CFY-zW-EEf" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-370" y="104"/>
+        </scene>
+    </scenes>
+</document>

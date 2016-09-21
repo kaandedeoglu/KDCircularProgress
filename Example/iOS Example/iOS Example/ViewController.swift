@@ -1,12 +1,13 @@
 //
 //  ViewController.swift
-//  KDCircularProgressExample
+//  iOS Example
 //
-//  Created by Kaan Dedeoglu on 2/12/15.
-//  Copyright (c) 2015 Kaan Dedeoglu. All rights reserved.
+//  Created by Kaan Dedeoglu on 9/21/16.
+//  Copyright © 2016 Kaan Dedeoglu. All rights reserved.
 //
 
 import UIKit
+import KDCircularProgress
 
 class ViewController: UIViewController {
     var progress: KDCircularProgress!
@@ -43,4 +44,5 @@ class ViewController: UIViewController {
         }
     }
 }
+
 
