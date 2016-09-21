@@ -18,7 +18,7 @@ Here's an example
 [Youtube Link](http://youtu.be/iIdas72MXOg)
 
 
-![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot.gif)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot.gif)
 
 ![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot.png)
 ![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot2.jpg)
