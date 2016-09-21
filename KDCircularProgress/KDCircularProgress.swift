@@ -175,7 +175,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
         
         set {
-            setColors(colors: newValue)
+            set(colors: newValue)
         }
     }
     
@@ -244,15 +244,15 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     private func checkAndSetIBColors() {
         let nonNilColors = [IBColor1, IBColor2, IBColor3].flatMap { $0 }
         if !nonNilColors.isEmpty {
-            setColors(colors: nonNilColors)
+            set(colors: nonNilColors)
         }
     }
     
-    public func setColors(colors: UIColor...) {
-        setColors(colors: colors)
+    public func set(colors: UIColor...) {
+        set(colors: colors)
     }
     
-    private func setColors(colors: [UIColor]) {
+    private func set(colors: [UIColor]) {
         progressLayer.colorsArray = colors
         progressLayer.setNeedsDisplay()
     }

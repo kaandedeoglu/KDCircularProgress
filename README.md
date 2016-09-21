@@ -29,17 +29,17 @@ Here's an example
 ![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot7.jpg)
 
 ```swift
-let progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 progress.startAngle = -90
 progress.progressThickness = 0.2
-progress.trackThickness = 0.7
+progress.trackThickness = 0.6
 progress.clockwise = true
-progress.center = view.center
 progress.gradientRotateSpeed = 2
-progress.roundedCorners = true
-progress.glowMode = .Forward
-progress.angle = 300
-progress.setColors(UIColor.cyanColor() ,UIColor.whiteColor(), UIColor.magentaColor())
+progress.roundedCorners = false
+progress.glowMode = .forward
+progress.glowAmount = 0.9
+progress.set(colors: UIColor.cyan ,UIColor.white, UIColor.magenta, UIColor.white, UIColor.orange)
+progress.center = CGPoint(x: view.center.x, y: view.center.y + 25)
 view.addSubview(progress)
 ```
 
@@ -70,46 +70,70 @@ Just drag `KDCircularProgress.swift` into your project.
 ####progressColors: `[UIColor]`
 The colors used to generate the gradient of the progress. You can also set this using the variadic `setColors(UIColor...)` method. A gradient is used only if there is more than one color. A fill is used otherwise. The default is a white fill.
 
+------
+
 ####angle: `Int`
 The angle of the progress. Between 0 and 360 (inclusive). Simply change its value in order to change the visual progress of the component. Default is 0.
+
+------
 
 ####startAngle: `Int`
 The angle at which the progress will begin. Between 0 and 360 (inclusive), however you can pass any negative or positive values and the component will mod them automatically to the required range. Default is 0.
 
+------
+
 ####clockwise: `Bool`
 Clockwise if true, Counter-clockwise if false. Default is true.
+
+------
 
 ####roundedCorners: `Bool`
 When true, the ends of the progress track will be drawn with a half circle radius. Default is false.
 
+------
+
 ####gradientRotateSpeed: `CGFloat`
 Describes how many times the underlying gradient will perform a 2π rotation for each full cycle of the progress. Integer values recommended. Default is 0.
+
+------
 
 ####glowAmount: `CGFloat`
 The intensity of the glow. Between 0 and 1.0. Default is 1.0.
 
+------
+
 ####glowMode: `KDCircularProgressGlowMode`
-- **.Forward** - The glow increases proportionaly to the angle. No glow at 0 degrees and full glow at 360 degrees.
+- **.forward** - The glow increases proportionaly to the angle. No glow at 0 degrees and full glow at 360 degrees.
 
-- **.Reverse** - The glow increases inversely proportional to the angle. Full glow at 0 degrees and no glow at 360 degrees.
+- **.reverse** - The glow increases inversely proportional to the angle. Full glow at 0 degrees and no glow at 360 degrees.
 
-- **.Constant** - Constant glow.
+- **.constant** - Constant glow.
 
-- **.NoGlow** - No glow
+- **.noGlow** - No glow
 
-The default is **.Forward**
+The default is **.forward**
+
+------
 
 ####progressThickness: `CGFloat`
 The thickness of the progress. Between 0 and 1. Default is 0.4
 
+------
+
 ####trackThickness: `CGFloat`
 The thickness of the background track. Between 0 and 1. Default is 0.5
+
+------
 
 ####trackColor: `UIColor`
 The color of the background track. Default is `UIColor.blackColor()`.
 
+------
+
 ####progressInsideFillColor: `UIColor`
 The color of the center of the circle. Default is `UIColor.clearColor()`.
+
+------
 
 ##Methods
 ```swift 
@@ -117,16 +141,23 @@ override public init(frame: CGRect)
 ```
 Initialize with a frame. Please only use square frames.
 
+------
+
 ```swift 
 convenience public init(frame:CGRect, colors: UIColor...)
 ```
 Initialize with a frame and the gradient colors.
 
+------
+
 ```swift 
-public func setColors(colors: UIColor...)
+public func set(colors: UIColor...)
+public func set(colors: [UIColor])
 ```
 
 Set the colors for the progress gradient.
+
+------
 
 ```swift
 public func animateFromAngle(fromAngle: Int, toAngle: Int, duration: NSTimeInterval, relativeDuration: Bool = true, completion: ((Bool) -> Void)?)
@@ -136,17 +167,23 @@ Animate the progress from an initial value to a final value, with a completion b
 
 `relativeDuration` - specify if the duration is for the specific animation or is the duration that would make a full turn.
 
+------
+
 ```swift
 public func animateToAngle(toAngle: Int, duration: NSTimeInterval, completion: ((Bool) -> Void)?)
 ```
 
 Animate the progress from the current state to a target value.
 
+------
+
 ```swift 
 public func pauseAnimation()
 ```
 
 Pause the animation, if any.
+
+------
 
 ```swift 
 public func isAnimating() -> Bool
@@ -162,7 +199,7 @@ Prefering light colors in the gradients gives better results. As mentioned befor
 - [ ] Carthage Support
 - [x] CocoaPods Support
 - [x] IBDesignable/IBInspectable support
-- [X] Adding a `progress` property as an alternative to `angle`
+- [x] Adding a `progress` property as an alternative to `angle`
 - [ ] Clean up
 
 ##Contact

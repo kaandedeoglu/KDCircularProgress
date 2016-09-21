@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         progress.roundedCorners = false
         progress.glowMode = .forward
         progress.glowAmount = 0.9
-        progress.setColors(colors: UIColor.cyan ,UIColor.white, UIColor.magenta, UIColor.white, UIColor.orange)
+        progress.set(colors: UIColor.cyan ,UIColor.white, UIColor.magenta, UIColor.white, UIColor.orange)
         progress.center = CGPoint(x: view.center.x, y: view.center.y + 25)
         view.addSubview(progress)
     }
