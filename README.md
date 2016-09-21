@@ -28,6 +28,44 @@ Here's an example
 ![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot6.jpg)
 ![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot7.jpg)
 
+## Requirements
+`KDCircularProgress` requires iOS 8+, although iOS 8 support hasn't been tested in a while.
+
+## Installation
+- It's on CocoaPods under the name (you guessed it!) KDCircularProgress
+- Just drag `KDCircularProgress.swift` into your project. `Carthage` support is on To-do list.
+
+### CocoaPods
+
+KDCircularProgress is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```bash
+pod 'KDCircularProgress'
+```
+
+then run
+
+```bash
+$ pod install
+```
+
+### Carthage
+
+Add the line `github "kaandedeoglu/KDCircularProgress"` to your `Cartfile` and then run the command:
+
+```bash
+carthage update
+```
+
+
+### Manually
+
+Just drag `KDCircularProgress.swift` into your project.
+
+##Sample Code
+Below you can see code that creates and sets up a `KCircularProgress` instance. Which gives you a configuration that looks similar to the progress in the example images.
+
 ```swift
 progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 progress.startAngle = -90
@@ -42,28 +80,6 @@ progress.set(colors: UIColor.cyan ,UIColor.white, UIColor.magenta, UIColor.white
 progress.center = CGPoint(x: view.center.x, y: view.center.y + 25)
 view.addSubview(progress)
 ```
-
-## Installation
-- It's on CocoaPods under the name (you guessed it!) KDCircularProgress
-- Just drag `KDCircularProgress.swift` into your project. `Carthage` support is on To-do list.
-
-### CocoaPods
-
-KDCircularProgress is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'KDCircularProgress'
-```
-
-### Manually
-
-Just drag `KDCircularProgress.swift` into your project.
-
-### Carthage
-
-`Carthage` support is on To-do list.
-
 
 ## Properties
 
@@ -196,7 +212,7 @@ Prefering light colors in the gradients gives better results. As mentioned befor
 
 ##To-Do
 - [x] Add example project
-- [ ] Carthage Support
+- [x] Carthage Support
 - [x] CocoaPods Support
 - [x] IBDesignable/IBInspectable support
 - [x] Adding a `progress` property as an alternative to `angle`
