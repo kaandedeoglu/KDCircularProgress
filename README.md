@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/KDCircularProgress.svg?style=flat)](http://cocoapods.org/pods/KDCircularProgress)
 
 >
-`KDCircularProgress` master branch is now compatible with Swift 3 (tag 1.5.0). Check Swift 2 (tag 1.4.1) & Swift 2.3 (tag 1.4.5) branches for older versions.
+`KDCircularProgress` master branch is now compatible with Swift 3 (tag 1.5.2). Check Swift 2 (tag 1.4.1) & Swift 2.3 (tag 1.4.5) branches for older versions.
 
 
 `KDCircularProgress` is a circular progress view written in Swift. It makes it possible to have gradients in the progress view, along with glows and animations.
@@ -20,13 +20,13 @@ Here's an example
 
 ![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot.gif)
 
-![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot.png)
-![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot2.jpg)
-![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot3.jpg)
-![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot4.jpg)
-![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot5.jpg)
-![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot6.jpg)
-![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/screenshot7.jpg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot2.jpg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot3.jpg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot4.jpg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot5.jpg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot6.jpg)
+![Screenshot](https://raw.githubusercontent.com/kaandedeoglu/KDCircularProgress/master/Assets/screenshot7.jpg)
 
 ```swift
 progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
@@ -211,7 +211,7 @@ Drop me an email if you want discuss anything further.
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Kaan Dedeoglu
+Copyright (c) 2016 Kaan Dedeoglu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
