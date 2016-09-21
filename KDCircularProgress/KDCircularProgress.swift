@@ -197,7 +197,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     
     convenience public init(frame:CGRect, colors: UIColor...) {
         self.init(frame: frame)
-        setColors(colors: colors)
+        set(colors: colors)
     }
     
     required public init(coder aDecoder: NSCoder) {
@@ -224,7 +224,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     private func setInitialValues() {
         radius = (frame.size.width/2.0) * 0.8 //We always apply a 20% padding, stopping glows from being clipped
         backgroundColor = .clear
-        setColors(colors: .white, .cyan)
+        set(colors: .white, .cyan)
     }
     
     private func refreshValues() {
