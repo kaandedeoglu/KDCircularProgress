@@ -169,7 +169,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
     }
     
-    @IBInspectable public var progressColors: [UIColor] {
+    public var progressColors: [UIColor] {
         get {
             return progressLayer.colorsArray
         }
