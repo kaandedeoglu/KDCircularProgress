@@ -77,6 +77,14 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     private var radius: CGFloat = 0 {
         didSet {
             progressLayer.radius = radius
+            progressLayer.setNeedsDisplay()
+        }
+    }
+    
+    @IBInspectable public var paddingPercentage: CGFloat = 20 {
+        didSet {
+            paddingPercentage = Utility.clamp(value: paddingPercentage, minMax: (0, 100))
+            radius = (frame.size.width/2.0) * ((100 - paddingPercentage) / 100)
         }
     }
     
@@ -218,11 +226,11 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        radius = (frame.size.width/2.0) * 0.8
+        radius = (frame.size.width/2.0) * ((100 - paddingPercentage) / 100)
     }
     
     private func setInitialValues() {
-        radius = (frame.size.width/2.0) * 0.8 //We always apply a 20% padding, stopping glows from being clipped
+        radius = (frame.size.width/2.0) * ((100 - paddingPercentage) / 100)
         backgroundColor = .clear
         set(colors: .white, .cyan)
     }
@@ -424,8 +432,25 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
             
             let trackLineWidth = radius * trackThickness
             let progressLineWidth = radius * progressThickness
+            
+            let trackRadius: CGFloat
+            let progressRadius: CGFloat
+            
+            if trackLineWidth < progressLineWidth {
+                trackRadius = radius - trackLineWidth/2 - (progressLineWidth - trackLineWidth)/2
+                progressRadius = radius - progressLineWidth/2
+//                trackLineWidth -= (progressLineWidth - trackLineWidth)/2
+            } else if progressLineWidth < trackLineWidth {
+                progressRadius = radius - progressLineWidth/2 - (trackLineWidth - progressLineWidth)/2
+                trackRadius = radius - trackLineWidth/2
+//                progressLineWidth -= (trackLineWidth - progressLineWidth)/2
+            } else {
+                progressRadius = radius - progressLineWidth/2
+                trackRadius = radius - trackLineWidth/2
+            }
+            
             let arcRadius = max(radius - trackLineWidth/2, radius - progressLineWidth/2)
-            ctx.addArc(center: CGPoint(x: width/2.0, y: height/2.0), radius: arcRadius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: false)
+            ctx.addArc(center: CGPoint(x: width/2.0, y: height/2.0), radius: trackRadius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: false)
             trackColor.set()
             ctx.setStrokeColor(trackColor.cgColor)
             ctx.setFillColor(progressInsideFillColor.cgColor)
@@ -440,7 +465,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
             let fromAngle = Conversion.degreesToRadians(value: CGFloat(-startAngle))
             let toAngle = Conversion.degreesToRadians(value: CGFloat((clockwise == true ? -reducedAngle : reducedAngle) - startAngle))
             
-            imageCtx?.addArc(center: CGPoint(x: width/2.0, y: height/2.0), radius: arcRadius, startAngle: fromAngle, endAngle: toAngle, clockwise: clockwise)
+            imageCtx?.addArc(center: CGPoint(x: width/2.0, y: height/2.0), radius: progressRadius, startAngle: fromAngle, endAngle: toAngle, clockwise: clockwise)
             
             let glowValue = GlowConstants.glowAmount(forAngle: reducedAngle, glowAmount: glowAmount, glowMode: glowMode, size: width)
             if glowValue > 0 {
