@@ -276,6 +276,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         animation.toValue = toAngle
         animation.duration = animationDuration
         animation.delegate = self
+        animation.isRemovedOnCompletion = false
         angle = toAngle
         animationCompletionBlock = completion
         
