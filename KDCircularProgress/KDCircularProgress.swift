@@ -273,6 +273,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         animation.fromValue = fromAngle
         animation.toValue = toAngle
         animation.duration = animationDuration
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
         animation.delegate = self
         animation.isRemovedOnCompletion = false
         angle = toAngle
