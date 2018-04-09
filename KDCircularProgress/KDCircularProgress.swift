@@ -144,7 +144,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     
     @IBInspectable public var progressThickness: CGFloat = 0.4 {//Between 0 and 1
         didSet {
-            progressThickness = progressThickness.clamped(toMinimum: 0, maximum: 1)
+            progressThickness = progressThickness.clamped(toMinimum: 0, maximum: 10)
             progressLayer.progressThickness = progressThickness / 2
         }
     }
@@ -166,6 +166,12 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     @IBInspectable public var progressInsideFillColor: UIColor? = nil {
         didSet {
             progressLayer.progressInsideFillColor = progressInsideFillColor ?? .clear
+        }
+    }
+    
+    @IBInspectable public var progressLayerRadiusPadding: CGFloat = 1 {
+        didSet {
+            progressLayer.progressLayerRadiusPadding = progressLayerRadiusPadding
         }
     }
     
@@ -359,6 +365,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         var trackThickness: CGFloat = 0.5
         var trackColor: UIColor = .black
         var progressInsideFillColor: UIColor = .clear
+        var progressLayerRadiusPadding: CGFloat = 1
         var colorsArray: [UIColor] = [] {
             didSet {
                 invalidateGradientCache()
@@ -404,6 +411,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
             trackColor = progressLayer.trackColor
             colorsArray = progressLayer.colorsArray
             progressInsideFillColor = progressLayer.progressInsideFillColor
+            progressLayerRadiusPadding = progressLayer.progressLayerRadiusPadding
         }
         
         override init() {
@@ -439,7 +447,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
             let fromAngle = Conversion.degreesToRadians(value: CGFloat(-startAngle))
             let toAngle = Conversion.degreesToRadians(value: CGFloat((clockwise == true ? -reducedAngle : reducedAngle) - startAngle))
             
-            imageCtx?.addArc(center: CGPoint(x: width / 2.0, y: height / 2.0), radius: arcRadius, startAngle: fromAngle, endAngle: toAngle, clockwise: clockwise)
+            imageCtx?.addArc(center: CGPoint(x: width / 2.0, y: height / 2.0), radius: arcRadius * progressLayerRadiusPadding, startAngle: fromAngle, endAngle: toAngle, clockwise: clockwise)
             
             let glowValue = GlowConstants.glowAmount(forAngle: reducedAngle, glowAmount: glowAmount, glowMode: glowMode, size: width)
             if glowValue > 0 {
