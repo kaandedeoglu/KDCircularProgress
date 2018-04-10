@@ -142,16 +142,16 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
     }
     
-    @IBInspectable public var progressThickness: CGFloat = 0.4 {//Between 0 and 1
+    @IBInspectable public var progressThickness: CGFloat = 0.4 {//Between 0 and 10
         didSet {
             progressThickness = progressThickness.clamped(toMinimum: 0, maximum: 10)
             progressLayer.progressThickness = progressThickness / 2
         }
     }
     
-    @IBInspectable public var trackThickness: CGFloat = 0.5 {//Between 0 and 1
+    @IBInspectable public var trackThickness: CGFloat = 0.5 {//Between 0 and 10
         didSet {
-            trackThickness = trackThickness.clamped(toMinimum: 0, maximum: 1)
+            trackThickness = trackThickness.clamped(toMinimum: 0, maximum: 10)
             progressLayer.trackThickness = trackThickness / 2
         }
     }
@@ -169,9 +169,9 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
     }
     
-    @IBInspectable public var progressLayerRadiusPadding: CGFloat = 1 {
+    @IBInspectable public var progressLayerRadiusPadding: CGFloat = 1 {//Between 0 and 10
         didSet {
-            progressLayer.progressLayerRadiusPadding = progressLayerRadiusPadding
+            progressLayer.progressLayerRadiusPadding = progressLayerRadiusPadding.clamped(toMinimum: 0, maximum: 10)
         }
     }
     
