@@ -240,7 +240,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     }
     
     private func checkAndSetIBColors() {
-        let nonNilColors = [IBColor1, IBColor2, IBColor3].flatMap { $0 }
+        let nonNilColors = [IBColor1, IBColor2, IBColor3].compactMap { $0 }
         if !nonNilColors.isEmpty {
             set(colors: nonNilColors)
         }
