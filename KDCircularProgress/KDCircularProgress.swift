@@ -8,7 +8,7 @@
 
 import UIKit
 
-public enum KDCircularProgressGlowMode {
+@objc public enum KDCircularProgressGlowMode: Int {
     case forward, reverse, constant, noGlow
 }
 
