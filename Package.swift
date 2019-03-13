@@ -8,7 +8,8 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "KDCircularProgress"
+            name: "KDCircularProgress",
+            path: "KDCircularProgress"
         )
     ]
 )
