@@ -169,9 +169,9 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         progressLayer.gradientRotateSpeed = gradientRotateSpeed
         progressLayer.glowAmount = glowAmount
         progressLayer.glowMode = glowMode
-        progressLayer.progressThickness = progressThickness / 2
+        progressLayer.progressThickness = progressThickness / 2.0
         progressLayer.trackColor = trackColor
-        progressLayer.trackThickness = trackThickness / 2
+        progressLayer.trackThickness = trackThickness / 2.0
     }
     
     private func checkAndSetIBColors() {
