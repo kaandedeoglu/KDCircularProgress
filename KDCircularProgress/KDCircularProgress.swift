@@ -26,6 +26,7 @@ private extension Comparable {
 }
 
 @IBDesignable
+@objcMembers
 public class KDCircularProgress: UIView, CAAnimationDelegate {
     private enum Conversion {
         static func degreesToRadians (value:CGFloat) -> CGFloat {
@@ -443,7 +444,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
             
             let glowValue = GlowConstants.glowAmount(forAngle: reducedAngle, glowAmount: glowAmount, glowMode: glowMode, size: width)
             if glowValue > 0 {
-                imageCtx?.setShadow(offset: CGSize.zero, blur: glowValue, color: UIColor.black.cgColor)
+                imageCtx?.setShadow(offset: .zero, blur: glowValue, color: UIColor.black.cgColor)
             }
             
             let linecap: CGLineCap = roundedCorners ? .round : .butt

@@ -2,7 +2,7 @@
 //  KDCircularProgress iOS.h
 //  KDCircularProgress iOS
 //
-//  Created by Kaan Dedeoglu on 9/21/16.
+//  Copyright (c) 2019 Kaan Dedeoglu. All rights reserved.
 //
 //
 
