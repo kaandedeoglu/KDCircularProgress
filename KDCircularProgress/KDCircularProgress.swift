@@ -135,8 +135,8 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         set(colors: colors)
     }
     
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         translatesAutoresizingMaskIntoConstraints = false
         setInitialValues()
         refreshValues()
