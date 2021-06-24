@@ -152,11 +152,11 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        radius = (frame.size.width / 2.0) * 0.8
+        radius = (frame.size.width / 2.0) * (glowMode == .noGlow ? 1.0 :0.8)
     }
     
     private func setInitialValues() {
-        radius = (frame.size.width / 2.0) * 0.8 //We always apply a 20% padding, stopping glows from being clipped
+        radius = (frame.size.width / 2.0) * (glowMode == .noGlow ? 1.0 :0.8) //We always apply a 20% padding, stopping glows from being clipped
         backgroundColor = .clear
         set(colors: .white, .cyan)
     }
